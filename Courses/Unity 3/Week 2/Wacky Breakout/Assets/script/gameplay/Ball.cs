@@ -38,7 +38,7 @@ namespace Assets.script.gameplay
 			if (_delayTimer.Finished && !_delayTimer.Stopped)
 			{
 				_delayTimer.Stop();
-				_rb.AddForce(Vector2.down * ConfigurationUtils.BallImpulseForce, ForceMode2D.Force);
+				_rb.AddForce(new Vector2(Random.Range(-0.2f, 0.2f), -1) * ConfigurationUtils.BallImpulseForce, ForceMode2D.Force);
 			}
 			if (_deathTimer.Finished)
 			{
