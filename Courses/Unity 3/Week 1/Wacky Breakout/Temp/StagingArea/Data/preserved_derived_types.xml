@@ -1,0 +1,8 @@
+<linker>
+<assembly fullname="Assembly-CSharp">
+<type fullname="Assets.script.gameplay.Ball" preserve="all"/>
+<type fullname="Assets.script.gameplay.Block" preserve="all"/>
+<type fullname="Assets.script.gameplay.Paddle" preserve="all"/>
+<type fullname="Assets.script.util.GameInitializer" preserve="all"/>
+</assembly>
+</linker>
