@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets.script.configuration;
 using Assets.script.Events.FreezeEvents;
+using Assets.script.Menu;
 using Assets.script.util;
 using UnityEngine;
 
@@ -43,6 +44,11 @@ namespace Assets.script.gameplay
 
 		public void FixedUpdate()
 		{
+			if (Input.GetKey(KeyCode.Escape))
+			{
+				MenuManager.GoToMenu(MenuItems.PAUSE);
+			}
+
 			if (_freezerTimer != null && _freezerTimer.Running)
 			{
 				return;

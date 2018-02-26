@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c42f5378a01a3a341ba729cacce0a2dd
-timeCreated: 1519649863
+timeCreated: 1519666029
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,8 @@ TextureImporter:
     21300010: Menu_5
     21300012: Menu_6
     21300014: Menu_7
+    21300016: Menu_8
+    21300018: Menu_9
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -94,12 +96,12 @@ TextureImporter:
       name: Menu_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 333
-        width: 273
+        x: 3
+        y: 502
+        width: 270
         height: 97
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -109,11 +111,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 330
-        y: 333
-        width: 272
+        y: 503
+        width: 271
         height: 97
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -123,11 +125,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 222
-        width: 273
+        y: 391
+        width: 272
         height: 97
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -137,11 +139,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 329
-        y: 222
+        y: 391
         width: 273
         height: 97
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -151,11 +153,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 116
+        y: 285
         width: 273
         height: 97
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -164,12 +166,12 @@ TextureImporter:
       name: Menu_5
       rect:
         serializedVersion: 2
-        x: 329
-        y: 116
-        width: 273
+        x: 328
+        y: 285
+        width: 274
         height: 97
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -179,11 +181,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 5
+        y: 174
         width: 275
         height: 97
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -193,11 +195,39 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 327
-        y: 5
+        y: 174
         width: 276
         height: 97
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Menu_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 67
+        width: 273
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Menu_9
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 67
+        width: 273
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

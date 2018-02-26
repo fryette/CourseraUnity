@@ -1,37 +1,40 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+namespace Assets.script.Menu
 {
-
-	void Start()
+	public class MainMenu : MonoBehaviour
 	{
 
-	}
+		void Start()
+		{
 
-	public void HandlePlayButtonOnClickEvent()
-	{
-		SceneManager.LoadScene("Gameplay");
-	}
+		}
 
-	public void HandleHelpButtonOnClickEvent()
-	{
-		SceneManager.LoadScene("Help");
-	}
+		public void HandlePlayButtonOnClickEvent()
+		{
+			SceneManager.LoadScene("Gameplay");
+		}
 
-	public void HandleQuitButtonOnClickEvent()
-	{
-		Application.Quit();
-	}
+		public void HandleHelpButtonOnClickEvent()
+		{
+			SceneManager.LoadScene("Help");
+		}
 
-	public void HandleGoBackButtonOnClickEvent()
-	{
-		SceneManager.LoadScene(0);
-	}
+		public void HandleQuitButtonOnClickEvent()
+		{
+			Application.Quit();
+		}
 
-	// Update is called once per frame
-	void Update()
-	{
+		public void HandleGoBackButtonOnClickEvent()
+		{
+			SceneManager.LoadScene("Menu");
+		}
 
+		// Update is called once per frame
+		void Update()
+		{
+
+		}
 	}
 }
