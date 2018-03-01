@@ -21,9 +21,9 @@ namespace Assets.script.configuration
 		private float _standartBlockWorth = 10;
 		private float _bonusBlockWorth = 20;
 		private float _pickupBlockWorth;
-		private float _speedupBlockWorthProbability = 0.15f;
-		private float _standartBlockWorthProbability = 0.4f;
-		private float _freezeBlockWorthProbability = 0.25f;
+		private float _speedupBlockWorthProbability = 0.2f;
+		private float _standartBlockWorthProbability = 0.63f;
+		private float _freezeBlockWorthProbability = 0.12f;
 		private float _bonusBlockWorthProbability = 0.1f;
 		private int _maxLifes = 5;
 		private int _freezerEffectInSeconds = 2;

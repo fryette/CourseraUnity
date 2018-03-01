@@ -25,10 +25,11 @@ namespace Assets.script
 		{
 			_dimensionsY = ScreenUtils.ScreenTop * 0.8f;
 
-			var block = Instantiate(PickUpBlockPrefab);
+			var block = Instantiate(StandartBlockPrefab);
 			var boxCollider = block.GetComponent<BoxCollider2D>();
-			var blockColliderWidth = boxCollider.size.x + DimensionsX;
-			var blockColliderHeight = boxCollider.size.y;
+			var blockColliderWidth = boxCollider.size.x * block.transform.localScale.x + DimensionsX;
+			var blockColliderHeight = boxCollider.size.y * block.transform.localScale.y;
+
 			Destroy(block);
 
 			GenerateRowsOfBlocks(blockColliderWidth, blockColliderHeight);
@@ -65,23 +66,23 @@ namespace Assets.script
 		{
 			var result = Random.Range(0f, 1f);
 
-			if (result > ConfigurationUtils.StandartBlockWorthProbability)
+			if (result <= ConfigurationUtils.BonusBlockWorthProbability)
 			{
-				Instantiate(StandartBlockPrefab, position, Quaternion.identity);
+				Instantiate(BonusBlockPrefab, position, Quaternion.identity);
 			}
-			else if (result > ConfigurationUtils.FreezeBlockWorthProbability)
+			else if (result <= ConfigurationUtils.FreezeBlockWorthProbability)
 			{
 				Instantiate(PickUpBlockPrefab, position, Quaternion.identity).GetComponent<PickupBlock>()
 					.SetEffect(PickupEffect.FREEZER);
 			}
-			else if(result > ConfigurationUtils.SpeedupBlockWorthProbability)
+			else if (result <= ConfigurationUtils.SpeedupBlockWorthProbability)
 			{
 				Instantiate(PickUpBlockPrefab, position, Quaternion.identity).GetComponent<PickupBlock>()
 					.SetEffect(PickupEffect.SPEEDUP);
 			}
 			else
 			{
-				Instantiate(BonusBlockPrefab, position, Quaternion.identity);
+				Instantiate(StandartBlockPrefab, position, Quaternion.identity);
 			}
 		}
 	}

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50956729012358264}
   - component: {fileID: 114555885366203052}
   - component: {fileID: 61753750349361340}
+  - component: {fileID: 58949008169608536}
   m_Layer: 8
   m_Name: ball
   m_TagString: Ball
@@ -38,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1573107014044914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.5, z: 0}
-  m_LocalScale: {x: 2.8158834, y: 2.8158834, z: 2.8158834}
+  m_LocalScale: {x: 0.29504317, y: 0.29316446, z: 0.40811017}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,6 +64,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &58949008169608536
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1573107014044914}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.0126617}
+  serializedVersion: 2
+  m_Radius: 0.7227345
 --- !u!61 &61753750349361340
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -75,18 +91,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0007404685, y: -0.0016917139}
+  m_Offset: {x: 0.0029263794, y: -0.0048570633}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1.7399999, y: 1.76}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15744576, y: 0.15512979}
+  m_Size: {x: 1.7118299, y: 1.7311819}
   m_EdgeRadius: 0
 --- !u!114 &114555885366203052
 MonoBehaviour:
@@ -133,7 +149,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: da7fbb072935c254bb0ac52a6613be80, type: 3}
+  m_Sprite: {fileID: 21300016, guid: 6184a657ca395a245bb94b8daf1539f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -36,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164897764448648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3459437, y: -2.0519838, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.1036334, y: 0.0033371449, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,18 +54,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.030704737, y: -0.0295676}
+  m_Offset: {x: 0.01056468, y: -0.0009180307}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.95, y: 0.39}
+    oldSize: {x: 3.21, y: 1.45}
     newSize: {x: 1.95, y: 0.39}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8421988, y: 0.38620353}
+  m_Size: {x: 3.148055, y: 1.373349}
   m_EdgeRadius: 0
 --- !u!114 &114493299198531866
 MonoBehaviour:
@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd6b90ccf25e6844808dfa4621a3a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FreezerSprite: {fileID: 21300000, guid: 0385e0889460025458cb2edee0dd5230, type: 3}
-  SpeedupSprite: {fileID: 21300000, guid: d2102fc25d8603a43b1d70e53bdbf4ab, type: 3}
+  FreezerSprite: {fileID: 21300004, guid: 6184a657ca395a245bb94b8daf1539f7, type: 3}
+  SpeedupSprite: {fileID: 21300000, guid: 6184a657ca395a245bb94b8daf1539f7, type: 3}
 --- !u!212 &212073549617619508
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -114,7 +114,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0385e0889460025458cb2edee0dd5230, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 6184a657ca395a245bb94b8daf1539f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
