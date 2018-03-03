@@ -1,20 +1,27 @@
-﻿using UnityEngine;
+﻿using Assets.script.Events;
+using Assets.script.Events.Models;
 
 namespace Assets.script.gameplay
 {
-	public class Block : MonoBehaviour
+	public class Block : IntEventInvoker
 	{
-		protected float Worth;
-		private HUD _hud;
+		protected int Worth;
 
-		public void Start()
+		protected virtual void Start()
 		{
-			_hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
+			Events.Add(EventName.SCORE_CHANGED_EVENT, new ScoreChangedEvent());
+			EventManager.AddInvoker(EventName.SCORE_CHANGED_EVENT, this);
 		}
 
 		protected virtual void OnCollisionEnter2D()
 		{
-			_hud.AddScore(Worth);
+			Events[EventName.SCORE_CHANGED_EVENT].Invoke(Worth);
+			Destroy(gameObject);
+		}
+
+		protected void OnBecameInvisible()
+		{
+			EventManager.RemoveInvoker(EventName.SCORE_CHANGED_EVENT, this);
 			Destroy(gameObject);
 		}
 	}

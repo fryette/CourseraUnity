@@ -1,7 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 namespace Assets.script
 {
@@ -10,8 +8,6 @@ namespace Assets.script
 	/// </summary>
 	public class Timer : MonoBehaviour
 	{
-		#region Fields
-
 		// timer duration
 		private float _totalSeconds;
 
@@ -23,13 +19,10 @@ namespace Assets.script
 		// support for Finished property
 		private bool _started;
 		private bool _stopped;
-		#endregion
 
 		public UnityEvent FinishedEvent;
 
-		#region Properties
-
-		public void Start()
+		public Timer()
 		{
 			FinishedEvent = new UnityEvent();
 		}
@@ -81,10 +74,6 @@ namespace Assets.script
 			set { _stopped = value; }
 		}
 
-		#endregion
-
-		#region Methods
-
 		/// <summary>
 		/// Update is called once per frame
 		/// </summary>
@@ -130,7 +119,5 @@ namespace Assets.script
 		{
 			_stopped = true;
 		}
-
-		#endregion
 	}
 }

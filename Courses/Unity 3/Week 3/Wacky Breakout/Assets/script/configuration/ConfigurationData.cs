@@ -18,9 +18,9 @@ namespace Assets.script.configuration
 		static float _ballLifeTime = 10;
 		static float _minSecondsToSpawn = 5;
 		static float _maxSecondsToSpawn = 10;
-		private float _standartBlockWorth = 10;
-		private float _bonusBlockWorth = 20;
-		private float _pickupBlockWorth;
+		private int _standartBlockWorth = 10;
+		private int _bonusBlockWorth = 20;
+		private int _pickupBlockWorth = 15;
 		private float _speedupBlockWorthProbability = 0.2f;
 		private float _standartBlockWorthProbability = 0.63f;
 		private float _freezeBlockWorthProbability = 0.12f;
@@ -71,17 +71,17 @@ namespace Assets.script.configuration
 			get { return _minSecondsToSpawn; }
 		}
 
-		public float StandartBlockWorth
+		public int StandartBlockWorth
 		{
 			get { return _standartBlockWorth; }
 		}
 
-		public float BonusBlockWorth
+		public int BonusBlockWorth
 		{
 			get { return _bonusBlockWorth; }
 		}
 
-		public float PickupBlockWorth
+		public int PickupBlockWorth
 		{
 			get { return _pickupBlockWorth; }
 		}
@@ -173,9 +173,9 @@ namespace Assets.script.configuration
 			_ballLifeTime = float.Parse(values[2]);
 			_minSecondsToSpawn = float.Parse(values[3]);
 			_maxSecondsToSpawn = float.Parse(values[4]);
-			_standartBlockWorth = float.Parse(values[5]);
-			_bonusBlockWorth = float.Parse(values[6]);
-			_pickupBlockWorth = float.Parse(values[7]);
+			_standartBlockWorth = int.Parse(values[5]);
+			_bonusBlockWorth = int.Parse(values[6]);
+			_pickupBlockWorth = int.Parse(values[7]);
 			_standartBlockWorthProbability = float.Parse(values[8]);
 			_bonusBlockWorthProbability = float.Parse(values[9]);
 			_freezeBlockWorthProbability = float.Parse(values[10]);

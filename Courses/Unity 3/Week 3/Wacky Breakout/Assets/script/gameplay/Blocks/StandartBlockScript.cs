@@ -6,9 +6,8 @@ namespace Assets.script.gameplay.Blocks
 	public class StandartBlockScript : Block
 	{
 		[SerializeField] public Sprite[] Sprites;
-		// Use this for initialization
 
-		public new void Start()
+		protected override void Start()
 		{
 			base.Start();
 

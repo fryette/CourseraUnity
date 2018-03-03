@@ -5,36 +5,24 @@ namespace Assets.script.Menu
 {
 	public class MainMenu : MonoBehaviour
 	{
-
-		void Start()
-		{
-
-		}
-
 		public void HandlePlayButtonOnClickEvent()
 		{
-			SceneManager.LoadScene("Gameplay");
+			MenuManager.GoToMenu(MenuItems.PLAY);
 		}
 
 		public void HandleHelpButtonOnClickEvent()
 		{
-			SceneManager.LoadScene("Help");
+			MenuManager.GoToMenu(MenuItems.HELP);
 		}
 
 		public void HandleQuitButtonOnClickEvent()
 		{
-			Application.Quit();
+			MenuManager.GoToMenu(MenuItems.QUIT);
 		}
 
 		public void HandleGoBackButtonOnClickEvent()
 		{
-			SceneManager.LoadScene("Menu");
-		}
-
-		// Update is called once per frame
-		void Update()
-		{
-
+			MenuManager.GoBack();
 		}
 	}
 }

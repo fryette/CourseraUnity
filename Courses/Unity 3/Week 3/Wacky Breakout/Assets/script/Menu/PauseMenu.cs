@@ -15,10 +15,16 @@ namespace Assets.script.Menu
 			Destroy(gameObject);
 		}
 
-		public void HandleQuitButtonOnClickEvent()
+		public void HandleHelpButtonOnClickEvent()
 		{
 			Time.timeScale = 1;
-			Destroy(gameObject);
+			MenuManager.GoToMenu(MenuItems.HELP);
+		}
+
+		public void HandleResetLevelButtonOnClickEvent()
+		{
+			Time.timeScale = 1;
+			MenuManager.GoToMenu(MenuItems.PLAY);
 		}
 	}
 }

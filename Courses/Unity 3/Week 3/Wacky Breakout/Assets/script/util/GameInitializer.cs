@@ -1,8 +1,10 @@
 ﻿using Assets.script.configuration;
+using Assets.script.Events;
 using UnityEngine;
 
 namespace Assets.script.util
 {
+	/// <inheritdoc />
 	/// <summary>
 	/// Initializes the game
 	/// </summary>
@@ -11,9 +13,9 @@ namespace Assets.script.util
 		/// <summary>
 		/// Awake is called before Start
 		/// </summary>
-		void Awake()
+		public void Awake()
 		{
-			// initialize screen utils
+			EventManager.Initialize();
 			ScreenUtils.Initialize();
 			ConfigurationUtils.Initialize();
 		}

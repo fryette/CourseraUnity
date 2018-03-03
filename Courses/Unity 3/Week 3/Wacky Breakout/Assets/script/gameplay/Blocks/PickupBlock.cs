@@ -1,7 +1,7 @@
 ﻿using System;
 using Assets.script.configuration;
 using Assets.script.Events;
-using Assets.script.Events.FreezeEvents;
+using Assets.script.Events.Models;
 using Assets.script.Events.SpeedupEvents;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,21 +12,21 @@ namespace Assets.script.gameplay.Blocks
 	{
 		[SerializeField] public Sprite FreezerSprite;
 		[SerializeField] public Sprite SpeedupSprite;
-		private FreezerEffectActivated _freezerEffectActivatedEvent;
 		private SpeedupEffectActivated _speedupEffectActivatedEvent;
 		public PickupEffect Effect { get; private set; }
 
-		new void Start()
+		protected override void Start()
 		{
-			_freezerEffectActivatedEvent = new FreezerEffectActivated();
+			base.Start();
+
 			_speedupEffectActivatedEvent = new SpeedupEffectActivated();
 
 			Worth = ConfigurationUtils.PickupBlockWorth;
 
-			EventManager.AddInvoker(this);
-			SpeedupEventManager.AddInvoker(this);
+			Events.Add(EventName.FREEZER_EFFECT_ACTIVATED_EVENT, new FreezeEffectActivatedEvent());
+			EventManager.AddInvoker(EventName.FREEZER_EFFECT_ACTIVATED_EVENT, this);
 
-			base.Start();
+			SpeedupEventManager.AddInvoker(this);
 		}
 
 		public void SetEffect(PickupEffect effect)
@@ -46,11 +46,6 @@ namespace Assets.script.gameplay.Blocks
 			}
 		}
 
-		public void AddFreezerEffectListener(UnityAction<int> action)
-		{
-			_freezerEffectActivatedEvent.AddListener(action);
-		}
-
 		public void AddSpeedupEffectListener(UnityAction<float, float> action)
 		{
 			_speedupEffectActivatedEvent.AddListener(action);
@@ -58,13 +53,18 @@ namespace Assets.script.gameplay.Blocks
 
 		protected override void OnCollisionEnter2D()
 		{
-			if (Effect == PickupEffect.FREEZER)
+			switch (Effect)
 			{
-				_freezerEffectActivatedEvent.Invoke(ConfigurationUtils.FreezerEffectInSeconds);
-			}
-			if (Effect == PickupEffect.SPEEDUP)
-			{
-				_speedupEffectActivatedEvent.Invoke(ConfigurationUtils.SpeedupEffectInSeconds,ConfigurationUtils.SpeedupEffectFactor);
+				case PickupEffect.FREEZER:
+					Events[EventName.FREEZER_EFFECT_ACTIVATED_EVENT].Invoke(ConfigurationUtils.FreezerEffectInSeconds);
+					break;
+				case PickupEffect.SPEEDUP:
+					_speedupEffectActivatedEvent.Invoke(
+						ConfigurationUtils.SpeedupEffectInSeconds,
+						ConfigurationUtils.SpeedupEffectFactor);
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
 			}
 
 			base.OnCollisionEnter2D();

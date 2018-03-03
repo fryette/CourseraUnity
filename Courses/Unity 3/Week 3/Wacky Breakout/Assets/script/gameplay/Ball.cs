@@ -1,40 +1,52 @@
 ﻿using Assets.script.configuration;
+using Assets.script.Events;
+using Assets.script.Events.Models;
 using Assets.script.Events.SpeedupEvents;
 using Assets.script.util;
 using UnityEngine;
 
 namespace Assets.script.gameplay
 {
-	public class Ball : MonoBehaviour
+	public class Ball : IntEventInvoker
 	{
 		private Timer _deathTimer;
-		private Timer _delayTimer;
+		private Timer _delayBeforeStartMovingTimer;
 		private Timer _speedupTimer;
 		private bool _isDestroided;
-		private HUD _hud;
 		private BallSpawner _ballSpawner;
-		private Rigidbody2D _rb;
+		private Rigidbody2D _rigidBody;
 		private float _speedupRatio;
 
 		public void Start()
 		{
 			SpeedupEventManager.AddListener(OnSpeedupEffectActivated);
 
-			_hud = GameObject.FindGameObjectWithTag("HUD").GetComponent<HUD>();
+			Events.Add(EventName.HEALTH_CHANGED_EVENT, new HealthChangedEvent());
+			EventManager.AddInvoker(EventName.HEALTH_CHANGED_EVENT, this);
 
-			_deathTimer = gameObject.AddComponent<Timer>();
-			_delayTimer = gameObject.AddComponent<Timer>();
+			ConfigureDeathTimer();
+			ConfigureDelayBeforeStartTimer();
 			_speedupTimer = gameObject.AddComponent<Timer>();
-
-			_deathTimer.Duration = ConfigurationUtils.BallLifeTime;
-			_delayTimer.Duration = 1f;
-
-			_deathTimer.Run();
-			_delayTimer.Run();
 
 			_ballSpawner = Camera.main.GetComponent<BallSpawner>();
 
-			_rb = GetComponent<Rigidbody2D>();
+			_rigidBody = GetComponent<Rigidbody2D>();
+		}
+
+		private void ConfigureDeathTimer()
+		{
+			_deathTimer = gameObject.AddComponent<Timer>();
+			_deathTimer.Duration = ConfigurationUtils.BallLifeTime;
+			_deathTimer.FinishedEvent.AddListener(DeastroyExpiredBall);
+			_deathTimer.Run();
+		}
+
+		private void ConfigureDelayBeforeStartTimer()
+		{
+			_delayBeforeStartMovingTimer = gameObject.AddComponent<Timer>();
+			_delayBeforeStartMovingTimer.FinishedEvent.AddListener(DelayBeforeStartMovingFinished);
+			_delayBeforeStartMovingTimer.Duration = 1f;
+			_delayBeforeStartMovingTimer.Run();
 		}
 
 		private void OnSpeedupEffectActivated(float duration, float speedupRatio)
@@ -46,15 +58,15 @@ namespace Assets.script.gameplay
 			else
 			{
 				_speedupTimer.Duration = duration;
-				_rb.velocity *= speedupRatio;
+				_rigidBody.velocity *= speedupRatio;
 				_speedupRatio = speedupRatio;
 
-				SupscribeOnSpeedupEvents();
+				SubscribeOnSpeedupEvents();
 				_speedupTimer.Run();
 			}
 		}
 
-		private void SupscribeOnSpeedupEvents()
+		private void SubscribeOnSpeedupEvents()
 		{
 			UnsubscribeFromSpeedupEvents();
 			_speedupTimer.FinishedEvent.AddListener(OnSpeedupFinished);
@@ -67,29 +79,31 @@ namespace Assets.script.gameplay
 
 		private void OnSpeedupFinished()
 		{
-			_rb.velocity /= _speedupRatio;
+			_rigidBody.velocity /= _speedupRatio;
 		}
 
-		// Update is called once per frame
-		void Update()
+		public void DeastroyExpiredBall()
 		{
-			if (_delayTimer.Finished && !_delayTimer.Stopped)
+			if (!_deathTimer.Finished)
 			{
-				_delayTimer.Stop();
-				_rb.AddForce(
-					new Vector2(Random.Range(-0.2f, 0.2f), -1) * ConfigurationUtils.BallImpulseForce *
-					EffectUtils.SpeedupEffectMonitor.SpeedupRation,
-					ForceMode2D.Force);
+				return;
+			}
 
-				TryToSubscribeOnSpeedupEffect();
-			}
-			if (_deathTimer.Finished)
+			if (!_isDestroided)
 			{
-				if (!_isDestroided)
-				{
-					DestroyObject();
-				}
+				DestroyObject();
 			}
+		}
+
+		private void DelayBeforeStartMovingFinished()
+		{
+			_delayBeforeStartMovingTimer.Stop();
+			_rigidBody.AddForce(
+				new Vector2(Random.Range(-0.2f, 0.2f), -1) * ConfigurationUtils.BallImpulseForce *
+				EffectUtils.SpeedupEffectMonitor.SpeedupRation,
+				ForceMode2D.Force);
+
+			TryToSubscribeOnSpeedupEffect();
 		}
 
 		private void TryToSubscribeOnSpeedupEffect()
@@ -107,14 +121,14 @@ namespace Assets.script.gameplay
 			if (!_isDestroided)
 			{
 				_isDestroided = true;
-				_hud.ReduceLifes();
+				Events[EventName.HEALTH_CHANGED_EVENT].Invoke(-1);
 				DestroyObject();
 			}
 		}
 
 		public void SetDirection(Vector2 direction)
 		{
-			_rb.velocity = _rb.velocity.magnitude * direction;
+			_rigidBody.velocity = _rigidBody.velocity.magnitude * direction;
 		}
 
 		private void DestroyObject()

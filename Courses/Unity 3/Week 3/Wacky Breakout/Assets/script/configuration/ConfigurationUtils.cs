@@ -38,17 +38,17 @@
 			get { return _configurationData.MinSecondsToSpawn; }
 		}
 
-		public static float StandartBlockWorth
+		public static int StandartBlockWorth
 		{
 			get { return _configurationData.StandartBlockWorth; }
 		}
 
-		public static float BonusBlockWorth
+		public static int BonusBlockWorth
 		{
 			get { return _configurationData.BonusBlockWorth; }
 		}
 
-		public static float PickupBlockWorth
+		public static int PickupBlockWorth
 		{
 			get { return _configurationData.PickupBlockWorth; }
 		}

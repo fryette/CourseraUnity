@@ -1,6 +1,6 @@
 ﻿using System;
 using Assets.script.configuration;
-using Assets.script.Events.FreezeEvents;
+using Assets.script.Events;
 using Assets.script.Menu;
 using Assets.script.util;
 using UnityEngine;
@@ -22,7 +22,7 @@ namespace Assets.script.gameplay
 
 		public void Start()
 		{
-			EventManager.AddListener(FreezerEffectActivated);
+			EventManager.AddListener(EventName.FREEZER_EFFECT_ACTIVATED_EVENT, FreezerEffectActivated);
 
 			_rb = GetComponent<Rigidbody2D>();
 			_freezerTimer = gameObject.AddComponent<Timer>();
