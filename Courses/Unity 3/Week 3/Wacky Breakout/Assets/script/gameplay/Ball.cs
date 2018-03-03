@@ -13,7 +13,6 @@ namespace Assets.script.gameplay
 		private Timer _delayBeforeStartMovingTimer;
 		private Timer _speedupTimer;
 		private bool _isDestroided;
-		private BallSpawner _ballSpawner;
 		private Rigidbody2D _rigidBody;
 		private float _speedupRatio;
 
@@ -21,16 +20,16 @@ namespace Assets.script.gameplay
 		{
 			SpeedupEventManager.AddListener(OnSpeedupEffectActivated);
 
-			Events.Add(EventName.HEALTH_CHANGED_EVENT, new HealthChangedEvent());
-			EventManager.AddInvoker(EventName.HEALTH_CHANGED_EVENT, this);
-
 			ConfigureDeathTimer();
 			ConfigureDelayBeforeStartTimer();
 			_speedupTimer = gameObject.AddComponent<Timer>();
 
-			_ballSpawner = Camera.main.GetComponent<BallSpawner>();
-
 			_rigidBody = GetComponent<Rigidbody2D>();
+
+			Events.Add(EventName.SPAWN_BALL, new SpawnBallEvent());
+			Events.Add(EventName.HEALTH_CHANGED_EVENT, new HealthChangedEvent());
+			EventManager.AddInvoker(EventName.HEALTH_CHANGED_EVENT, this);
+			EventManager.AddInvoker(EventName.SPAWN_BALL, this);
 		}
 
 		private void ConfigureDeathTimer()
@@ -139,7 +138,7 @@ namespace Assets.script.gameplay
 
 			if (gameObject.transform.position.y < ScreenUtils.ScreenBottom)
 			{
-				_ballSpawner.SpawnBall();
+				Events[EventName.SPAWN_BALL].Invoke(0);
 			}
 		}
 	}
