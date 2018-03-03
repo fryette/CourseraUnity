@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.script.Menu
 {
@@ -23,6 +22,11 @@ namespace Assets.script.Menu
 		public void HandleGoBackButtonOnClickEvent()
 		{
 			MenuManager.GoBack();
+		}
+
+		public void HandleHighestScoreButtonOnClickEvent()
+		{
+			MenuManager.GoToMenu(MenuItems.HIGHEST_SCORE);
 		}
 	}
 }

@@ -10,6 +10,8 @@ namespace Assets.script.gameplay
 		protected virtual void Start()
 		{
 			Events.Add(EventName.SCORE_CHANGED_EVENT, new ScoreChangedEvent());
+			Events.Add(EventName.GAME_WIN, new GameWin());
+			EventManager.AddInvoker(EventName.GAME_WIN, this);
 			EventManager.AddInvoker(EventName.SCORE_CHANGED_EVENT, this);
 		}
 
@@ -17,11 +19,13 @@ namespace Assets.script.gameplay
 		{
 			Events[EventName.SCORE_CHANGED_EVENT].Invoke(Worth);
 			Destroy(gameObject);
+			Events[EventName.GAME_WIN].Invoke(Worth);
 		}
 
 		protected void OnBecameInvisible()
 		{
 			EventManager.RemoveInvoker(EventName.SCORE_CHANGED_EVENT, this);
+			EventManager.RemoveInvoker(EventName.GAME_WIN, this);
 			Destroy(gameObject);
 		}
 	}

@@ -1,4 +1,4 @@
-﻿using Assets.script.configuration;
+﻿using Assets.script.Configuration;
 using Assets.script.gameplay;
 using Assets.script.gameplay.Blocks;
 using Assets.script.util;

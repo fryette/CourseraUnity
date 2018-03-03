@@ -1,4 +1,4 @@
-﻿using Assets.script.configuration;
+﻿using Assets.script.Configuration;
 using UnityEngine;
 
 namespace Assets.script.gameplay.Blocks

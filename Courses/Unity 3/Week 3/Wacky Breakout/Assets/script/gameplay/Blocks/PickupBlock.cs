@@ -1,5 +1,5 @@
 ﻿using System;
-using Assets.script.configuration;
+using Assets.script.Configuration;
 using Assets.script.Events;
 using Assets.script.Events.Models;
 using Assets.script.Events.SpeedupEvents;
@@ -10,8 +10,10 @@ namespace Assets.script.gameplay.Blocks
 {
 	public class PickupBlock : Block
 	{
-		[SerializeField] public Sprite FreezerSprite;
-		[SerializeField] public Sprite SpeedupSprite;
+		[SerializeField]
+		public Sprite FreezerSprite;
+		[SerializeField]
+		public Sprite SpeedupSprite;
 		private SpeedupEffectActivated _speedupEffectActivatedEvent;
 		public PickupEffect Effect { get; private set; }
 

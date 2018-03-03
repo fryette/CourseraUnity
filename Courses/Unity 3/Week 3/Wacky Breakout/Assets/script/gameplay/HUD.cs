@@ -1,15 +1,16 @@
-﻿using Assets.script.configuration;
+﻿using Assets.script.Configuration;
 using Assets.script.Events;
+using Assets.script.Events.Models;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.script.gameplay
 {
-	public class HUD : MonoBehaviour
+	public class HUD : IntEventInvoker
 	{
 
-		private float _score;
-		private float _remainLifes;
+		private int _score;
+		private int _remainLifes;
 		private Text _scoreText;
 		private Text _lifesLeftText;
 
@@ -17,6 +18,9 @@ namespace Assets.script.gameplay
 		{
 			EventManager.AddListener(EventName.SCORE_CHANGED_EVENT, HandleScoreChangedEvent);
 			EventManager.AddListener(EventName.HEALTH_CHANGED_EVENT, HandleHealthChangedEvent);
+
+			Events.Add(EventName.GAME_OVER, new GameOverEvent());
+			EventManager.AddInvoker(EventName.GAME_OVER, this);
 
 			_remainLifes = ConfigurationUtils.MaxLifes;
 
@@ -35,7 +39,13 @@ namespace Assets.script.gameplay
 			}
 
 			_remainLifes += i;
+
 			_lifesLeftText.text = string.Format("Lifes left: {0}", _remainLifes);
+
+			if (_remainLifes <= 0f)
+			{
+				Events[EventName.GAME_OVER].Invoke(_score);
+			}
 		}
 
 		private void HandleScoreChangedEvent(int worth)
@@ -47,6 +57,8 @@ namespace Assets.script.gameplay
 
 			_score += worth;
 			_scoreText.text = string.Format("Score: {0}", _score);
+
+			PlayerPrefs.SetInt("score", _score);
 		}
 	}
 }

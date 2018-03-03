@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 
-namespace Assets.script.configuration
+namespace Assets.script.Configuration
 {
 	/// <summary>
 	/// A container for the configuration data
@@ -25,7 +25,7 @@ namespace Assets.script.configuration
 		private float _standartBlockWorthProbability = 0.63f;
 		private float _freezeBlockWorthProbability = 0.12f;
 		private float _bonusBlockWorthProbability = 0.1f;
-		private int _maxLifes = 5;
+		private int _maxLifes = 10;
 		private int _freezerEffectInSeconds = 2;
 		private int _speedupEffectInSeconds = 3;
 		private float _speedupEffectFactor = 1.2f;

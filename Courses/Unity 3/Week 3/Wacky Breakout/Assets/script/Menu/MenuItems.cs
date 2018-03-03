@@ -6,6 +6,9 @@
 		QUIT,
 		PAUSE,
 		HELP,
-		PLAY
+		PLAY,
+		GAME_OVER,
+		GAME_WON,
+		HIGHEST_SCORE
 	}
 }

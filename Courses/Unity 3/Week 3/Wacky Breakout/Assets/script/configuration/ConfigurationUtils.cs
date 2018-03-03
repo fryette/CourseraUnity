@@ -1,4 +1,4 @@
-﻿namespace Assets.script.configuration
+﻿namespace Assets.script.Configuration
 {
 	/// <summary>
 	/// Provides access to configuration data

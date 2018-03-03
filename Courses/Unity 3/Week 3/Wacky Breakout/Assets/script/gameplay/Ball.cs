@@ -1,4 +1,4 @@
-﻿using Assets.script.configuration;
+﻿using Assets.script.Configuration;
 using Assets.script.Events;
 using Assets.script.Events.Models;
 using Assets.script.Events.SpeedupEvents;
@@ -121,6 +121,10 @@ namespace Assets.script.gameplay
 			{
 				_isDestroided = true;
 				Events[EventName.HEALTH_CHANGED_EVENT].Invoke(-1);
+
+				EventManager.RemoveInvoker(EventName.HEALTH_CHANGED_EVENT, this);
+				EventManager.RemoveInvoker(EventName.SPAWN_BALL, this);
+
 				DestroyObject();
 			}
 		}

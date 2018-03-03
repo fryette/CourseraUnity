@@ -1,7 +1,6 @@
 ﻿using System;
-using Assets.script.configuration;
+using Assets.script.Configuration;
 using Assets.script.Events;
-using Assets.script.Menu;
 using Assets.script.util;
 using UnityEngine;
 
@@ -44,11 +43,6 @@ namespace Assets.script.gameplay
 
 		public void FixedUpdate()
 		{
-			if (Input.GetKey(KeyCode.Escape))
-			{
-				MenuManager.GoToMenu(MenuItems.PAUSE);
-			}
-
 			if (_freezerTimer != null && _freezerTimer.Running)
 			{
 				return;
@@ -73,32 +67,30 @@ namespace Assets.script.gameplay
 		/// Detects collision with a ball to aim the ball
 		/// </summary>
 		/// <param name="coll">collision info</param>
-		void OnCollisionEnter2D(Collision2D coll)
+		public void OnCollisionEnter2D(Collision2D coll)
 		{
-			if (coll.gameObject.CompareTag("Ball") && IsCollisionHappensOnTopOfThePaddle(coll.contacts[0]))
+			if (!coll.gameObject.CompareTag("Ball") || !IsCollisionHappensOnTopOfThePaddle(coll.contacts[0]))
 			{
-				// calculate new ball direction
-				var ballOffsetFromPaddleCenter = transform.position.x -
-												   coll.transform.position.x;
-				var normalizedBallOffset = ballOffsetFromPaddleCenter /
-											 _halfColliderWidth;
-				var angleOffset = normalizedBallOffset * BounceAngleHalfRange;
-				var angle = Mathf.PI / 2 + angleOffset;
-				var direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-
-				// tell ball to set direction to new direction
-				var ballScript = coll.gameObject.GetComponent<Ball>();
-				ballScript.SetDirection(direction);
+				return;
 			}
+
+			// calculate new ball direction
+			var ballOffsetFromPaddleCenter = transform.position.x -
+			                                 coll.transform.position.x;
+			var normalizedBallOffset = ballOffsetFromPaddleCenter /
+			                           _halfColliderWidth;
+			var angleOffset = normalizedBallOffset * BounceAngleHalfRange;
+			var angle = Mathf.PI / 2 + angleOffset;
+			var direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+
+			// tell ball to set direction to new direction
+			var ballScript = coll.gameObject.GetComponent<Ball>();
+			ballScript.SetDirection(direction);
 		}
 
 		private bool IsCollisionHappensOnTopOfThePaddle(ContactPoint2D point)
 		{
-			if (Math.Abs(point.point.y) - Math.Abs(transform.position.y + _halfColliderHeight) < 0.06f)
-			{
-				return true;
-			}
-			return false;
+			return Math.Abs(point.point.y) - Math.Abs(transform.position.y + _halfColliderHeight) < 0.06f;
 		}
 
 		private void Move(float paddle)

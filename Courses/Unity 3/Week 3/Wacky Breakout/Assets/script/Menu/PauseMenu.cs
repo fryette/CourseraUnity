@@ -26,5 +26,11 @@ namespace Assets.script.Menu
 			Time.timeScale = 1;
 			MenuManager.GoToMenu(MenuItems.PLAY);
 		}
+
+		public void HandleMainMenuButtonOnClickEvent()
+		{
+			Time.timeScale = 1;
+			MenuManager.GoToMenu(MenuItems.MAIN_MENU);
+		}
 	}
 }

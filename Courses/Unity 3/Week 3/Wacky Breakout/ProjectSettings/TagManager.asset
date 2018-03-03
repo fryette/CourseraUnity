@@ -8,6 +8,9 @@ TagManager:
   - Score
   - HUD
   - LifesLeft
+  - FinalScore
+  - Block
+  - HighestScore
   layers:
   - Default
   - TransparentFX

@@ -26,6 +26,15 @@ namespace Assets.script.Menu
 				case MenuItems.PLAY:
 					GoToScene("Gameplay");
 					break;
+				case MenuItems.GAME_OVER:
+					Object.Instantiate(Resources.Load("GameOverMenu"));
+					break;
+				case MenuItems.GAME_WON:
+					Object.Instantiate(Resources.Load("GameWon"));
+					break;
+				case MenuItems.HIGHEST_SCORE:
+					GoToScene("HighestScore");
+					break;
 				default:
 					throw new ArgumentOutOfRangeException("item", item, null);
 			}
