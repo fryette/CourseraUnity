@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.script.Audio;
 using Assets.script.Configuration;
 using Assets.script.Events;
 using Assets.script.Events.Models;
@@ -23,12 +24,13 @@ namespace Assets.script.gameplay.Blocks
 
 			_speedupEffectActivatedEvent = new SpeedupEffectActivated();
 
-			Worth = ConfigurationUtils.PickupBlockWorth;
-
 			Events.Add(EventName.FREEZER_EFFECT_ACTIVATED_EVENT, new FreezeEffectActivatedEvent());
 			EventManager.AddInvoker(EventName.FREEZER_EFFECT_ACTIVATED_EVENT, this);
 
 			SpeedupEventManager.AddInvoker(this);
+
+			AudioClipName = AudioClipName.BALL_COLLISION;
+			Worth = ConfigurationUtils.PickupBlockWorth;
 		}
 
 		public void SetEffect(PickupEffect effect)

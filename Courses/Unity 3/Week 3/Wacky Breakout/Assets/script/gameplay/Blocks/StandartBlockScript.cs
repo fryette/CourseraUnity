@@ -1,4 +1,5 @@
-﻿using Assets.script.Configuration;
+﻿using Assets.script.Audio;
+using Assets.script.Configuration;
 using UnityEngine;
 
 namespace Assets.script.gameplay.Blocks
@@ -11,9 +12,10 @@ namespace Assets.script.gameplay.Blocks
 		{
 			base.Start();
 
-			Worth = ConfigurationUtils.StandartBlockWorth;
-
 			GetComponent<SpriteRenderer>().sprite = Sprites[Random.Range(0, Sprites.Length)];
+
+			AudioClipName = AudioClipName.BALL_COLLISION;
+			Worth = ConfigurationUtils.StandartBlockWorth;
 		}
 	}
 }

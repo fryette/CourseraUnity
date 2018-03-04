@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/scenes/Help.unity
     guid: be40a661baf148c4492dc46def53275b
   - enabled: 1
-    path: Assets/scenes/Gameplay.unity
-    guid: a42c25c9650a22f4586dcaf3326679d1
-  - enabled: 1
     path: Assets/scenes/HighestScore.unity
     guid: 4753de1aa145a534d85de36b3388d06f
+  - enabled: 1
+    path: Assets/scenes/Gameplay.unity
+    guid: a42c25c9650a22f4586dcaf3326679d1

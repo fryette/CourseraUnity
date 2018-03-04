@@ -1,4 +1,5 @@
-﻿using Assets.script.Events;
+﻿using Assets.script.Audio;
+using Assets.script.Events;
 using Assets.script.Menu;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,8 @@ namespace Assets.script.Gameplay
 			MenuManager.GoToMenu(MenuItems.GAME_OVER);
 
 			GameObject.FindWithTag("FinalScore").GetComponent<Text>().text += " " + score;
+
+			AudioManager.Play(AudioClipName.GAME_OVER);
 		}
 
 		private void HandleGameWinEvent(int i)
@@ -28,6 +31,8 @@ namespace Assets.script.Gameplay
 			{
 				return;
 			}
+
+			AudioManager.Play(AudioClipName.GAME_WON);
 
 			var highScore = PlayerPrefs.GetInt("highscore");
 			var score = PlayerPrefs.GetInt("score");
